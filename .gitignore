@@ -1,0 +1,52 @@
+# Docks
+docs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environments
+.venv/
+venv/
+.pyright/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# Alembic
+alembic/versions/*.pyc
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.turbo/
+.pnpm-store/
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build Artifacts
+build/
+dist/
+
+# Docker
+docker-data/
+
+# Logs
+*.log
+
+# Local Databases
+*.db
+*.sqlite
+*.sqlite3

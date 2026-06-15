@@ -1,0 +1,22 @@
+{
+  "include": ["app", "tests"],
+
+  "exclude": ["**/__pycache__", ".venv", "alembic", "build", "dist"],
+
+  "extraPaths": ["./app"],
+
+  "venvPath": ".",
+  "venv": ".venv",
+
+  "typeCheckingMode": "basic",
+
+  "useLibraryCodeForTypes": true,
+
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+
+  "reportUnusedImport": "warning",
+  "reportUnusedVariable": "warning",
+
+  "pythonVersion": "3.14"
+}
