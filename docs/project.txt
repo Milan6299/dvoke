@@ -1,0 +1,786 @@
+# Dvoke
+
+## Local-First Engineering Intelligence Platform
+
+---
+
+# Vision
+
+Dvoke is a local-first engineering intelligence platform that continuously indexes repositories, documentation, notes, and developer activity to help developers understand, search, navigate, and maintain software projects.
+
+Instead of acting as another AI chatbot, Dvoke serves as a knowledge layer on top of software projects.
+
+The goal is to reduce the time spent rediscovering architecture decisions, implementation details, configuration steps, and project knowledge.
+
+---
+
+# Problem Statement
+
+Developers accumulate large amounts of information across:
+
+* Source code
+* Documentation
+* Notes
+* Git history
+* Configuration files
+* Terminal activity
+
+Over time, this information becomes difficult to navigate and understand.
+
+Questions such as:
+
+* How is authentication implemented?
+* Where is JWT configured?
+* Which files are responsible for billing?
+* How is PostgreSQL integrated?
+* What architectural decisions were made?
+
+often require manually exploring repositories and documentation.
+
+Dvoke aims to provide a searchable and intelligent understanding layer over engineering knowledge.
+
+---
+
+# Objectives
+
+The project is designed to demonstrate practical skills in:
+
+## Full Stack Engineering
+
+* Next.js
+* React
+* TypeScript
+* TanStack Query
+* API integration
+* State management
+* Component architecture
+
+---
+
+## Backend Engineering
+
+* FastAPI
+* SQLAlchemy
+* PostgreSQL
+* Authentication
+* API architecture
+* Background processing
+* Repository pattern
+* Service architecture
+
+---
+
+## Linux Engineering
+
+* Repository indexing
+* Filesystem interaction
+* Git integration
+* Local-first architecture
+* CLI extensibility
+* Self-hosting
+
+---
+
+## AI Engineering
+
+* Embeddings
+* Semantic search
+* Retrieval systems
+* Context assembly
+* Local LLM integration
+* Knowledge retrieval
+
+---
+
+# Core Philosophy
+
+Dvoke is NOT:
+
+* A ChatGPT clone
+* A PDF chatbot
+* A note-taking application
+* A terminal history chatbot
+
+Dvoke IS:
+
+* An engineering knowledge platform
+* A project intelligence platform
+* A local search engine for software projects
+* An AI-assisted understanding system
+
+The database is the source of truth.
+
+AI is only used to enhance retrieval and understanding.
+
+---
+
+# Target Users
+
+Primary Users:
+
+* Software Engineers
+* Open Source Contributors
+* Linux Users
+* Backend Developers
+* Full Stack Developers
+* Self-hosters
+
+---
+
+# User Workflow
+
+## Step 1
+
+Create Workspace
+
+Example:
+
+* Personal Projects
+* Client Projects
+* Open Source Contributions
+
+---
+
+## Step 2
+
+Register Knowledge Sources
+
+Examples:
+
+### Repositories
+
+```text
+~/projects/dvoke
+~/projects/portfolio
+```
+
+### Documentation
+
+```text
+README.md
+design_docs/
+```
+
+### Notes
+
+```text
+markdown notes
+obsidian vaults
+```
+
+### Git Data
+
+```text
+commits
+branches
+metadata
+```
+
+### Future Sources
+
+```text
+terminal activity
+bookmarks
+wiki pages
+```
+
+---
+
+## Step 3
+
+Indexing
+
+Dvoke analyzes:
+
+* files
+* directories
+* code
+* commits
+* documentation
+
+and extracts:
+
+* metadata
+* relationships
+* technologies
+* searchable content
+
+---
+
+## Step 4
+
+Knowledge Exploration
+
+Users can:
+
+### Search
+
+Examples:
+
+```text
+jwt
+postgres
+authentication
+docker
+```
+
+---
+
+### Ask Questions
+
+Examples:
+
+```text
+How is authentication implemented?
+
+Where is PostgreSQL configured?
+
+Show API architecture.
+```
+
+---
+
+### Discover Relationships
+
+Examples:
+
+```text
+Project
+→ Module
+
+Module
+→ Service
+
+Service
+→ Database
+```
+
+---
+
+### Generate Documentation
+
+Examples:
+
+```text
+Architecture Overview
+
+Onboarding Guide
+
+API Documentation
+
+Project Summary
+```
+
+---
+
+# High Level Architecture
+
+```text
+Next.js Frontend
+          │
+          ▼
+      FastAPI
+          │
+ ┌────────┼─────────┐
+ │        │         │
+ ▼        ▼         ▼
+
+Postgres  Redis   Local AI
+
+          │
+          ▼
+
+     Workers
+
+          │
+          ▼
+
+ Repository Indexer
+```
+
+---
+
+# Technology Stack
+
+## Frontend
+
+### Next.js
+
+Purpose:
+
+* Main UI
+* Routing
+* Dashboard
+
+---
+
+### React
+
+Purpose:
+
+* Components
+* User interactions
+
+---
+
+### TypeScript
+
+Purpose:
+
+* Type safety
+
+---
+
+### TanStack Query
+
+Purpose:
+
+* Data fetching
+* Caching
+* Synchronization
+
+---
+
+### TailwindCSS
+
+Purpose:
+
+* Styling
+
+---
+
+### shadcn/ui
+
+Purpose:
+
+* Component system
+
+---
+
+# Backend
+
+## Python
+
+Primary backend language.
+
+---
+
+## FastAPI
+
+Purpose:
+
+* REST APIs
+* Authentication
+* Search APIs
+* AI APIs
+
+---
+
+## SQLAlchemy
+
+Purpose:
+
+* ORM
+* Database access
+
+---
+
+## Pydantic
+
+Purpose:
+
+* Validation
+* API contracts
+
+---
+
+# Database
+
+## PostgreSQL
+
+Stores:
+
+* Users
+* Workspaces
+* Repositories
+* Documents
+* Metadata
+* Search indexes
+
+---
+
+# Background Processing
+
+## Redis
+
+Queue backend.
+
+---
+
+## ARQ
+
+Worker system.
+
+Responsibilities:
+
+* indexing
+* extraction
+* embedding generation
+
+---
+
+# AI Layer
+
+## Ollama
+
+Local inference engine.
+
+Suggested Models:
+
+* Qwen
+* Gemma
+* Llama
+
+---
+
+## Sentence Transformers
+
+Embedding generation.
+
+Suggested:
+
+```text
+BAAI/bge-small-en-v1.5
+```
+
+---
+
+# Core Domain Models
+
+## User
+
+```text
+id
+email
+password_hash
+created_at
+```
+
+---
+
+## Workspace
+
+```text
+id
+user_id
+name
+created_at
+```
+
+---
+
+## Repository
+
+```text
+id
+workspace_id
+name
+path
+language
+last_indexed_at
+```
+
+---
+
+## Document
+
+```text
+id
+workspace_id
+title
+source
+path
+```
+
+---
+
+## Chunk
+
+```text
+id
+document_id
+text
+embedding
+metadata
+```
+
+---
+
+## Conversation
+
+```text
+id
+workspace_id
+created_at
+```
+
+---
+
+## Message
+
+```text
+id
+conversation_id
+role
+content
+```
+
+---
+
+# Version 1
+
+## Foundation
+
+Goal:
+
+Build a production-grade application foundation.
+
+### Features
+
+Authentication
+
+* Register
+* Login
+* JWT
+
+Workspaces
+
+* Create workspace
+* Manage workspace
+
+Repository Registration
+
+* Add repository
+* Remove repository
+
+Repository Metadata
+
+* Name
+* Path
+* Language
+
+Frontend
+
+* Authentication pages
+* Dashboard
+* Repository management
+
+Deliverable:
+
+A complete full-stack application with authentication and repository management.
+
+---
+
+# Version 2
+
+## Repository Intelligence
+
+Goal:
+
+Understand projects.
+
+### Features
+
+Repository scanning
+
+Extract:
+
+* file structure
+* languages
+* metadata
+
+Technology detection
+
+Examples:
+
+* FastAPI
+* Django
+* React
+* PostgreSQL
+
+Project summaries
+
+Repository statistics
+
+Deliverable:
+
+A searchable inventory of engineering projects.
+
+---
+
+# Version 3
+
+## Search Platform
+
+Goal:
+
+Make project knowledge discoverable.
+
+### Features
+
+Keyword search
+
+Metadata filtering
+
+Project filtering
+
+Repository explorer
+
+Deliverable:
+
+GitHub-like search across local engineering knowledge.
+
+---
+
+# Version 4
+
+## AI Knowledge Layer
+
+Goal:
+
+Add intelligent retrieval.
+
+### Features
+
+Chunking
+
+Embeddings
+
+Vector search
+
+Hybrid retrieval
+
+Question answering
+
+Examples:
+
+```text
+How does authentication work?
+
+Where is PostgreSQL configured?
+
+Show files related to JWT.
+```
+
+Deliverable:
+
+Context-aware project understanding.
+
+---
+
+# Version 5
+
+## Engineering Intelligence
+
+Goal:
+
+Generate useful project insights.
+
+### Features
+
+Architecture summaries
+
+Documentation generation
+
+Technology graphs
+
+Project relationships
+
+Knowledge graph foundation
+
+Deliverable:
+
+An intelligent project understanding platform.
+
+---
+
+# Future Roadmap
+
+## CLI
+
+Examples:
+
+```bash
+dvoke search jwt
+
+dvoke ask "how does auth work"
+
+dvoke docs generate
+
+dvoke repos list
+```
+
+The CLI should communicate with the existing backend APIs.
+
+---
+
+## VS Code Extension
+
+Potential future integration.
+
+---
+
+## Terminal Activity
+
+Potential future source.
+
+Examples:
+
+* command history
+* project-specific activity
+* shell workflows
+
+---
+
+## Architecture Visualization
+
+Interactive project maps.
+
+---
+
+# Open Source Goals
+
+The project should be:
+
+* Local-first
+* Self-hostable
+* Linux-friendly
+* Privacy-focused
+* Extensible
+
+All user data remains under user control.
+
+---
+
+# Success Criteria
+
+A successful Dvoke installation should allow a developer to:
+
+* Register repositories
+* Search engineering knowledge
+* Understand unfamiliar projects
+* Generate documentation
+* Discover architectural relationships
+* Retrieve information quickly
+
+without relying on external cloud services.
+
+---
+
+# Final Statement
+
+Dvoke is a local-first engineering intelligence platform that combines full-stack engineering, backend architecture, Linux tooling, search infrastructure, and AI-assisted retrieval into a unified developer experience.
+
+Its purpose is not to replace developers.
+
+Its purpose is to help developers understand software systems faster.
